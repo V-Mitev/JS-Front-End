@@ -9,7 +9,7 @@ function solve(words, text) {
 				textArray[j].length === wordsArray[i].length;
 
 			if (isMatch) {
-                textArray[j] = wordsArray[i];
+				textArray[j] = wordsArray[i];
 			}
 		}
 	}
