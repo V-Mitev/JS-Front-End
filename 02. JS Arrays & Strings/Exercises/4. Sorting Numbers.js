@@ -1,33 +1,17 @@
 function solve(array) {
-	let orderedArray = [];
+	let resultArray = [];
+	let sortedArray = array.sort((a, b) => a - b);
+	let arrayLength = array.length;
 
-	while (array.length > 0) {
-		let smallestNumber = Number.MAX_VALUE;
-		let indexOfSmallestNum = 0;
-		let biggestNumber = Number.MIN_VALUE;
-		let indexOfBigestNum = 0;
-
-		for (let i = 0; i <= array.length - 1; i++) {
-			if (smallestNumber > array[i]) {
-				smallestNumber = array[i];
-			}
-
-			if (biggestNumber < array[i]) {
-				biggestNumber = array[i];
-			}
+	for (let index = 0; index < arrayLength; index++) {
+		if (index % 2 === 0) {
+			resultArray.push(sortedArray.shift());
+		} else {
+			resultArray.push(sortedArray.pop());
 		}
-
-		indexOfSmallestNum = array.indexOf(smallestNumber);
-		array.splice(indexOfSmallestNum, 1);
-
-		indexOfBigestNum = array.indexOf(biggestNumber);
-		array.splice(indexOfBigestNum, 1);
-
-		orderedArray.push(smallestNumber);
-		orderedArray.push(biggestNumber);
 	}
 
-	console.log(orderedArray.join('\n'));
+	return resultArray;
 }
 
 solve([1, 65, 3, 52, 48, 63, 31, -3, 18, 56]);
