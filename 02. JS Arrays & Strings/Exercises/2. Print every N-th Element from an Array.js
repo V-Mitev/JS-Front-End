@@ -7,7 +7,7 @@ function solve(array, n) {
 		newArray.push(element);
 	}
 
-	console.log(newArray.join("\n"));
+	return newArray;
 }
 
 solve(["5", "20", "31", "4", "20"], 2);
