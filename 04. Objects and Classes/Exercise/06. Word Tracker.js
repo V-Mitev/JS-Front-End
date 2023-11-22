@@ -2,22 +2,21 @@ function solve(input) {
 	let words = [];
 
 	let wordsToSearch = input[0].split(" ");
-	let counter = Number(0);
 
 	for (let i = 0; i < wordsToSearch.length; i++) {
-		words[wordsToSearch[i]] = counter;
+		words.push({ word: wordsToSearch[i], counter: 0 });
 	}
 
 	for (let i = 1; i < input.length; i++) {
-		for (const word of Object.keys(words)) {
-			if (word === input[i]) {
-				words[word]++;
+		for (const wordObj of words) {
+			if (wordObj.word === input[i]) {
+				wordObj.counter++;
 			}
 		}
 	}
 
-	for (const [key, value] of Object.entries(words).sort((a, b) => b[1] - a[1])) {
-		console.log(`${key} - ${value}`);
+	for (const wordObj of words.sort((a, b) => b.counter - a.counter)) {
+		console.log(`${wordObj.word} - ${wordObj.counter}`);
 	}
 }
 
